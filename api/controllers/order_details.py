@@ -6,7 +6,7 @@ def create(db: Session, order_detail: schemas.OrderDetailCreate):
     db_order_detail = models.OrderDetail(
         order_id=order_detail.order_id,
         sandwich_id=order_detail.sandwich_id,
-        quantity=order_detail.quantity
+        quantity=order_detail.quantity,
     )
     db.add(db_order_detail)
     db.commit()

@@ -4,11 +4,7 @@ from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 
 from .models import models, schemas
-<<<<<<< HEAD
 from .controllers import orders, sandwiches, resources, recipes, order_details
-=======
-from .controllers import orders, sandwiches, resources, recipes
->>>>>>> origin/master
 from .dependencies.database import engine, get_db
 
 logging.basicConfig(level=logging.INFO)
@@ -163,7 +159,6 @@ def delete_one_recipe(recipe_id: int, db: Session = Depends(get_db)):
     recipe = recipes.read_one(db, recipe_id=recipe_id)
     if recipe is None:
         raise HTTPException(status_code=404, detail="Recipe not found")
-<<<<<<< HEAD
     return recipes.delete(db=db, recipe_id=recipe_id)
 
 # OrderDetails endpoints
@@ -188,6 +183,3 @@ def update_one_order_detail(order_detail_id: int, order_detail: schemas.OrderDet
     if order_detail_db is None:
         raise HTTPException(status_code=404, detail="OrderDetail not found")
     return order_details.update(db=db, order_detail=order_detail, order_detail_id=order_detail_id)
-=======
-    return recipes.delete(db=db, recipe_id=recipe_id)
->>>>>>> origin/master
